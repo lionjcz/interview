@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.interview.ExampleUnitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-12-14T02:49:08" hostname="JOHN-BC130G8" time="0.002">
-  <properties/>
-  <testcase name="testReturnText" classname="com.example.interview.ExampleUnitTest" time="0.002"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
