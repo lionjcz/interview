@@ -30,6 +30,7 @@ id main_loading
 id popup_menu_layout
 id recyclerView
 id titleTextView
+id webview
 layout activity_main
 layout fragment_page_a
 layout fragment_page_b

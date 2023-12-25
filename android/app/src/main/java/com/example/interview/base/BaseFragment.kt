@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import com.example.interview.MainActivity
+import com.example.interview.WebSiteFragment
 
 abstract class BaseFragment : Fragment() {
 
@@ -21,13 +22,13 @@ abstract class BaseFragment : Fragment() {
     }
 
     fun updateTitle(sTitle: String) {
-        val viewModel = (activity as? MainActivity)?.viewModel;
-        viewModel?.updateTitle(sTitle);
+        val viewModel = (activity as? MainActivity)?.viewModel
+        viewModel?.updateTitle(sTitle)
     }
 
     fun updateSettingsButtonVisibility(b: Boolean) {
-        val viewModel = (activity as? MainActivity)?.viewModel;
-        viewModel?.updateSettingsButtonVisibility(b);
+        val viewModel = (activity as? MainActivity)?.viewModel
+        viewModel?.updateSettingsButtonVisibility(b)
     }
 
 
@@ -36,6 +37,10 @@ abstract class BaseFragment : Fragment() {
         mainActivity?.viewModel?.setActionOnSettings {
             function()
         }
+    }
+
+    fun goToNext(fragment: WebSiteFragment) {
+        (activity as? MainActivity)?.goToNext(fragment)
     }
 
 }

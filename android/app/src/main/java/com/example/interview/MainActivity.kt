@@ -7,7 +7,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import com.example.interview.databinding.ActivityMainBinding
 
@@ -17,7 +16,7 @@ const val sTAG = "InterView"
 
 class MainActivity: AppCompatActivity(){
 
-    val viewModel: SharedViewModel by viewModels()
+    val viewModel: MainActivityViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,13 +24,12 @@ class MainActivity: AppCompatActivity(){
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.mainBar);
-        supportActionBar?.setDisplayShowTitleEnabled(false);
+        setSupportActionBar(binding.mainBar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        // 只在这里设置 LiveData 的观察
-        viewModel.textData.observe(this, Observer { data ->
+        viewModel.textData.observe(this) { data ->
             binding.mainBarTitle.text = data
-        })
+        }
 
         val pageAFragment = PageAFragment()
         supportFragmentManager.beginTransaction()
@@ -43,14 +41,13 @@ class MainActivity: AppCompatActivity(){
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
 
-        // 可见性和图标更新
         val settingsItem = menu.findItem(R.id.action_settings)
-        viewModel.settingsButtonVisible.observe(this, Observer { isVisible ->
+        viewModel.settingsButtonVisible.observe(this) { isVisible ->
             settingsItem.isVisible = isVisible
-        })
-        viewModel.settingsButtonIcon.observe(this, Observer { iconResId ->
+        }
+        viewModel.settingsButtonIcon.observe(this) { iconResId ->
             settingsItem.icon = ContextCompat.getDrawable(this, iconResId)
-        })
+        }
 
         return true
     }
@@ -65,13 +62,19 @@ class MainActivity: AppCompatActivity(){
         }
     }
 
+    fun goToNext(fragment: WebSiteFragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.main_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
 
 }
 
-class SharedViewModel : ViewModel() {
+class MainActivityViewModel : ViewModel() {
     val textData = MutableLiveData<String>()
-    val settingsButtonVisible = MutableLiveData<Boolean>(true)
-    val settingsButtonIcon = MutableLiveData<Int>(R.drawable.ic_settings) // 默认图标
+    val settingsButtonVisible = MutableLiveData(true)
+    val settingsButtonIcon = MutableLiveData(R.drawable.ic_settings)
 
     fun updateTitle(newData: String) {
         textData.value = newData
@@ -81,20 +84,11 @@ class SharedViewModel : ViewModel() {
         settingsButtonVisible.value = isVisible
     }
 
-    fun updateSettingsButtonIcon(iconResId: Int) {
-        settingsButtonIcon.value = iconResId
-    }
-
-    fun someAction(function: () -> Unit) {
-        function()
-    }
-
-    // 其他 LiveData
     val actionOnSettings: MutableLiveData<() -> Unit> = MutableLiveData()
 
-    // 设置 lambda 函数
     fun setActionOnSettings(action: () -> Unit) {
         actionOnSettings.value = action
     }
+
 }
 
