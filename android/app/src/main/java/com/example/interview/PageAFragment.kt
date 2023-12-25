@@ -32,7 +32,6 @@ class PageAFragment(override val mLayoutResId: Int = R.layout.fragment_page_a) :
         updateTitle("Tu");
         updateSettingsButtonVisibility(true)
         updateSettingsButtonVisibility2 {
-//            Log.d(sTAG, "ABCD")
             showDialog()
         }
 
