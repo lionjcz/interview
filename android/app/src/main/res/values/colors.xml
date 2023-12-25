@@ -2,4 +2,24 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="baseWhite">#ffffffff</color>
+    <color name="basePurple_200">#FFBB86FC</color>
+    <color name="basePurple_500">#FF6200EE</color>
+    <color name="basePurple_700">#FF3700B3</color>
+    <color name="baseTeal_200">#FF03DAC5</color>
+    <color name="baseTeal_700">#FF018786</color>
+    <color name="baseBlack">#000000</color>
+    <color name="baseTransparent">#00FF0303</color>
+    <color name="baseGray">#808080</color><!--灰色 -->
+
+
+    <!--    底部選單的顏色-->
+    <!--    已選擇的顏色-->
+    <color name="bottomSelected">@color/baseWhite</color>
+    <!--    按下去的顏色-->
+    <color name="bottonClicking">@color/baseWhite</color>
+    <!--    沒選擇的顏色-->
+    <color name="bottomUnSelected">@color/baseGray</color>
+
 </resources>

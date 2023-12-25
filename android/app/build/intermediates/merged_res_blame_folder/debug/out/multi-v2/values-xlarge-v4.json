@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.interview.app-mergeDebugResources-29:/values-xlarge-v4/values-xlarge-v4.xml",
+            "outputFile": "com.example.interview.app-mergeDebugResources-38:/values-xlarge-v4/values-xlarge-v4.xml",
             "map": [
                 {
                     "source": "C:\\Users\\t925\\.gradle\\caches\\transforms-3\\26c911d3cf93a7c0e4fcf2c49b0a758c\\transformed\\appcompat-1.6.1\\res\\values-xlarge-v4\\values-xlarge-v4.xml",

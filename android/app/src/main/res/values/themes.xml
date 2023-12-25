@@ -6,4 +6,47 @@
     </style>
 
     <style name="Theme.Interview" parent="Base.Theme.Interview" />
+
+
+    <style name="ToolBarMainTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/titleTextColor</item>
+        <item name="android:textColorSecondary">?android:attr/textColorSecondary</item>
+        <!--<item name="android:layout_height">80dp</item>-->
+        <!--<item name="android:background">#00ff00</item>-->
+        <item name="android:elevation">8dp</item>
+    </style>
+    <style name="ToolBarMainTheme.Title" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/baseBlack</item>
+        <item name="android:textColorSecondary">?android:attr/textColorSecondary</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="ToolBarMainTheme.Loading">
+        <item name="android:background">#6000</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="ThemeBase" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/basePurple_500</item>
+        <item name="colorPrimaryVariant">@color/basePurple_700</item>
+        <item name="colorOnPrimary">@color/baseWhite</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/baseTeal_200</item>
+        <item name="colorSecondaryVariant">@color/baseTeal_700</item>
+        <item name="colorOnSecondary">@color/baseBlack</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="navContainer">
+        <item name="android:background">@drawable/base_bg</item>
+    </style>
+
+
 </resources>

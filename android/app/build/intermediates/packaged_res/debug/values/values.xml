@@ -1,11 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="baseBlack">#000000</color>
+    <color name="baseGray">#808080</color>
+    <color name="basePurple_200">#FFBB86FC</color>
+    <color name="basePurple_500">#FF6200EE</color>
+    <color name="basePurple_700">#FF3700B3</color>
+    <color name="baseTeal_200">#FF03DAC5</color>
+    <color name="baseTeal_700">#FF018786</color>
+    <color name="baseTransparent">#00FF0303</color>
+    <color name="baseWhite">#ffffffff</color>
     <color name="black">#FF000000</color>
+    <color name="bottomSelected">@color/baseWhite</color>
+    <color name="bottomUnSelected">@color/baseGray</color>
+    <color name="bottonClicking">@color/baseWhite</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">Interview</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <style name="Base.Theme.Interview" parent="Theme.Material3.DayNight.NoActionBar">
         
         
     </style>
     <style name="Theme.Interview" parent="Base.Theme.Interview"/>
+    <style name="ThemeBase" parent="Theme.AppCompat.Light.NoActionBar">
+        
+        <item name="colorPrimary">@color/basePurple_500</item>
+        <item name="colorPrimaryVariant">@color/basePurple_700</item>
+        <item name="colorOnPrimary">@color/baseWhite</item>
+        
+        <item name="colorSecondary">@color/baseTeal_200</item>
+        <item name="colorSecondaryVariant">@color/baseTeal_700</item>
+        <item name="colorOnSecondary">@color/baseBlack</item>
+        
+        <item name="android:statusBarColor" ns1:targetApi="l">?attr/colorPrimaryVariant</item>
+        
+    </style>
+    <style name="ToolBarMainTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/titleTextColor</item>
+        <item name="android:textColorSecondary">?android:attr/textColorSecondary</item>
+        
+        
+        <item name="android:elevation">8dp</item>
+    </style>
+    <style name="ToolBarMainTheme.Loading">
+        <item name="android:background">#6000</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+    <style name="ToolBarMainTheme.Title" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/baseBlack</item>
+        <item name="android:textColorSecondary">?android:attr/textColorSecondary</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="navContainer">
+        <item name="android:background">@drawable/base_bg</item>
+    </style>
 </resources>
