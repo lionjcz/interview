@@ -1,18 +1,24 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Run a one-line script
-      run: echo Hello, world!
-
-    - name: Run a multi-line script
+    # 添加您的構建和測試指令
+    - name: Build and Test
       run: |
-        echo Add other commands here
-        echo This is a multi-line script
+        echo "在這裡加入構建和測試的指令"
+
+    # 如果有，添加部署步驟
+    - name: Deploy
+      run: |
+        echo "在這裡加入部署的指令"
