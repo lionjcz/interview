@@ -1,40 +1,16 @@
-name: PHP CI
+name: Simple CI
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push, pull_request]
 
 jobs:
-  test:
+  greetings:
     runs-on: ubuntu-latest
-
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: testdb
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=10s --health-retries=3
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Set up PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '7.4'
-        extensions: mbstring, pdo_mysql
-        ini-values: post_max_size=256M, upload_max_filesize=256M
+    - name: Print Hello World
+      run: echo Hello, world!
 
-    - name: Install Composer dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
-
-    - name: Run Tests
-      run: |
-        cp .env.testing .env
-        php artisan migrate
-        php artisan test
+    - name: Another Simple Command
+      run: echo Running another simple command...
