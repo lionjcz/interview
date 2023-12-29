@@ -1,24 +1,46 @@
-name: CI
+name: PHP CI/CD Pipeline
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: testdb
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=10s --health-retries=3
 
     steps:
     - uses: actions/checkout@v2
 
-    # 添加您的構建和測試指令
-    - name: Build and Test
-      run: |
-        echo "在這裡加入構建和測試的指令"
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'
+        extensions: mbstring, pdo_mysql
+        ini-values: post_max_size=256M, upload_max_filesize=256M
 
-    # 如果有，添加部署步驟
-    - name: Deploy
+    - name: Install Composer dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+
+    - name: Run Tests
       run: |
-        echo "在這裡加入部署的指令"
+        cp .env.testing .env
+        php artisan migrate
+        php artisan test
+
+    # 這裡添加部署到遠程伺服器的步驟
+    - name: Deploy to Server
+      run: |
+        scp -r * username@your-server-ip:/path/to/your/webroot/
+        ssh username@your-server-ip 'cd /path/to/your/webroot && composer install --no-dev && php artisan migrate'
+      env:
+        DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
