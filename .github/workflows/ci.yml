@@ -1,11 +1,13 @@
-name: PHP CI/CD Pipeline
+name: PHP CI
 
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     services:
@@ -36,11 +38,3 @@ jobs:
         cp .env.testing .env
         php artisan migrate
         php artisan test
-
-    # 這裡添加部署到遠程伺服器的步驟
-    - name: Deploy to Server
-      run: |
-        scp -r * username@your-server-ip:/path/to/your/webroot/
-        ssh username@your-server-ip 'cd /path/to/your/webroot && composer install --no-dev && php artisan migrate'
-      env:
-        DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
